@@ -1,0 +1,26 @@
+{
+  "LABEL": {
+    "name": "Title needs formatting",
+    "color": "#e6b627"
+  },
+  "CHECKS": {
+    "prefixes": [
+      "[Bugfix]: ",
+      "[Feature]: ",
+      "[Docs]: ",
+      "[Hotfix]: ",
+      "[Bump]: ",
+      "[Chore]: ",
+      "[Refactor]: ",
+      "[Test]: "
+    ],
+    "regexp": "docs\\(v[0-9]\\): ",
+    "regexpFlags": "i",
+    "ignoreLabels": []
+  },
+  "MESSAGES": {
+    "success": "Title OK",
+    "failure": "Title does not match format",
+    "notice": ""
+  }
+}

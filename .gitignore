@@ -1,0 +1,36 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+bld/
+[Bb]in/
+[Oo]bj/
+[Bb]uild/
+
+# Visual Studio
+.vs/
+Generated\ Files/
+
+# Visual Studio Code
+.vscode/*
+!.vscode/tasks.json
+*.code-workspace
+!.vscode/*.code-snippets
+
+# Logs
+[Ll]og/
+[Ll]ogs/
+*.log
+
+# Dependencies
+node_modules/
+
+# Coverage
+coverage
+*.lcov
+
+# Secrets
+.env
+appsettings.json
+env/
