@@ -1,21 +1,16 @@
 # KinoLibgraph
 
-**TODO: Add description**
+[![Docs](https://img.shields.io/badge/hex.pm-docs-8e7ce6.svg)](https://hexdocs.pm/kino_libgraph)
+[![build](https://github.com/hergetto/kino_libgraph/actions/workflows/branch-workflow.yml/badge.svg)](https://github.com/hergetto/kino_libgraph/actions/workflows/branch-workflow.yml)
+
+[Libgraph](https://github.com/bitwalker/libgraph) integration with [Kino](https://github.com/livebook-dev/kino) for [Livebook](https://github.com/livebook-dev/livebook).
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `kino_libgraph` to your list of dependencies in `mix.exs`:
+To use KinoLibgraph with Livebook, you only have to run `Mix.install/2`:
 
 ```elixir
-def deps do
-  [
-    {:kino_libgraph, "~> 0.1.0"}
-  ]
-end
+Mix.install([
+  {:kino_libgraph, "~> 0.1.0"}
+])
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/kino_libgraph>.
-

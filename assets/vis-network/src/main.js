@@ -1,8 +1,6 @@
 import vis from "vis-network";
 
 export function init(ctx, content) {
-  console.log(content);
-
   const { nodes, edges, type } = content;
 
   const container = ctx.root;
