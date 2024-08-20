@@ -1,0 +1,19 @@
+{
+  "name": "vis-network",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "kino-bundler --outdir ../../lib/assets/vis-network/build",
+    "dev": "npm run build -- --watch --dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "vis-network": "^9.1.9"
+  },
+  "devDependencies": {
+    "@livebook/kino-bundler": "^0.1.0"
+  }
+}

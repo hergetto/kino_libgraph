@@ -1,0 +1,78 @@
+name: build
+run-name: Build kino_libgraph - ${{ github.event.pull_request.title || github.event.head_commit.message || github.ref }}
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Install Dependencies Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        elixir: [1.17.2]
+        otp: [25.3]
+        node: [20.16]
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Elixir
+        uses: erlef/setup-beam@v1.17.5
+        with:
+          otp-version: ${{ matrix.otp }}
+          elixir-version: ${{ matrix.elixir }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Cache elixir deps
+        id: mix_cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            deps
+          key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('mix.lock') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.elixir }}-${{ matrix.otp }}-mix-
+
+      - name: Install dependencies
+        if: steps.mix_cache.outputs.cache-hit != 'true'
+        run: mix deps.get
+
+      - name: Compile dependencies
+        if: steps.mix_cache.outputs.cache-hit != 'true'
+        run: mix deps.compile --warnings-as-errors
+
+      - name: Cache Node modules
+        id: node_cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            assets/vis-network/node_modules
+          key: ${{ runner.os }}-${{ matrix.node }}-${{ hashFiles('assets/vis-network/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.node }}-node-
+
+      - name: Install Node dependencies
+        if: steps.node_cache.outputs.cache-hit != 'true'
+        run: npm ci --prefix assets/vis-network
+
+      - name: check Node dependencies
+        run: npm outdated --prefix assets/vis-network
+
+      - name: audit Node dependencies
+        run: npm audit --prefix assets/vis-network
+
+      - name: Build assets
+        run: npm run build --prefix assets/vis-network
+
+      - name: Build project
+        run: mix compile

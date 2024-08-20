@@ -1,0 +1,35 @@
+# Components
+
+```elixir
+Mix.install([{:kino_libgraph, "~> 0.1.0"}, {:libgraph, "~> 0.16.0"}])
+```
+
+## Directed Graphs
+
+### Libgraph
+
+This integration renders the `Librgraph` structs as interactive network graphs.
+
+```elixir
+directed_graph =
+  Graph.new()
+  |> Graph.add_edges([
+    {:b, :c, weight: -2},
+    {:a, :b, weight: 1},
+    {:c, :d, weight: 3},
+    {:b, :d, weight: 4}
+  ])
+```
+
+It also supports rendering undirected network graphs:
+
+```elixir
+undirected_graph =
+  Graph.new(type: :undirected)
+  |> Graph.add_edges([
+    {:b, :c, weight: -2},
+    {:a, :b, weight: -1},
+    {:c, :d, weight: -3},
+    {:d, :a, weight: -5}
+  ])
+```

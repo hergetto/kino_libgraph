@@ -1,36 +1,52 @@
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-bld/
-[Bb]in/
-[Oo]bj/
-[Bb]uild/
+# The directory Mix will write compiled artifacts to.
+/_build/
 
-# Visual Studio
-.vs/
-Generated\ Files/
+# If you run "mix test --cover", coverage assets end up here.
+/cover/
 
-# Visual Studio Code
-.vscode/*
-!.vscode/tasks.json
-*.code-workspace
-!.vscode/*.code-snippets
+# The directory Mix downloads your dependencies sources to.
+/deps/
 
-# Logs
-[Ll]og/
-[Ll]ogs/
-*.log
+# Where third-party dependencies like ExDoc output generated docs.
+/doc/
 
-# Dependencies
-node_modules/
+# Ignore .fetch files in case you like to edit your project deps locally.
+/.fetch
 
-# Coverage
-coverage
-*.lcov
+# If the VM crashes, it generates a dump, let's ignore it too.
+erl_crash.dump
+
+# Also ignore archive artifacts (built via "mix archive.build").
+*.ez
+
+# Ignore package tarball (built via "mix hex.build").
+deepl_ex-*.tar
+
+# Temporary files, for example, from tests.
+/tmp/
+
+# Ignore package tarball (built via "mix hex.build").
+deepl_ex-*.tar
+
+# Ignore language server files
+.elixir_ls/
+.elixir-tools/
+
+# Ignore PLT files (used by Dialyzer).
+/priv/plts/*.plt
+/priv/plts/*.plt.hash
+
+# Other
+*.beam
 
 # Secrets
+/config/*.secret.exs
 .env
-appsettings.json
-env/
+
+# Editors
+/.idea/
+/.vscode/
+
+# JavaScript
+**/node_modules/
+**/build/
