@@ -49,4 +49,3 @@ deepl_ex-*.tar
 
 # JavaScript
 **/node_modules/
-**/build/
